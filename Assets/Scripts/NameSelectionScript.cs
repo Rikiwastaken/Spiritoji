@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NameSelectionScript : MonoBehaviour
 {
@@ -16,11 +15,9 @@ public class NameSelectionScript : MonoBehaviour
     private Vector2 BaseSpawnpos;
 
     [SerializeField] private int SpawnOffset;
+    [SerializeField] private int MaxNames;
 
-
-    [SerializeField] private Button ContinueButton;
-
-
+    [SerializeField] private GameObject SpiritDesignationMenu;
 
 
     private void Start()
@@ -28,7 +25,7 @@ public class NameSelectionScript : MonoBehaviour
         BaseSpawnpos = SpawnNameButton.transform.localPosition;
     }
 
-    public void GetNamesFromInputFields()
+    private void GetNamesFromInputFields()
     {
         List<string> names = new List<string>();
         foreach (GameObject go in SpawnedGO)
@@ -39,14 +36,26 @@ public class NameSelectionScript : MonoBehaviour
                 names.Add(inputfield.text);
             }
         }
-        GameManagerScript.instance.PlayerNames = names;
+        List<GameManagerScript.PlayerData> newAllPlayerData = new List<GameManagerScript.PlayerData>();
+        for (int i = 0; i < names.Count; i++)
+        {
+            GameManagerScript.PlayerData newPlayerData = new GameManagerScript.PlayerData();
+            newPlayerData.PlayerID = i;
+            newPlayerData.PlayerName = names[i];
+            newPlayerData.PlayerScore = 0;
+            newAllPlayerData.Add(newPlayerData);
+        }
+        GameManagerScript.instance.AllPlayerData = newAllPlayerData;
     }
 
 
     // Creates a new input field for names
     public void SpawnButton()
     {
-
+        if (SpawnedGO.Count >= MaxNames)
+        {
+            return;
+        }
         GameObject newobject = GameObject.Instantiate(CharacterInputTextPrefabs);
 
         int alreadySpawnedNames = SpawnedGO.Count;
@@ -64,6 +73,10 @@ public class NameSelectionScript : MonoBehaviour
 
     public void Continue()
     {
-        Debug.Log("Continue");
+        GetNamesFromInputFields();
+        GameManagerScript.instance.ChooseSpirit();
+        SpiritDesignationMenu.SetActive(true);
+        gameObject.SetActive(false);
+        SpiritDesignationMenu.GetComponent<SpiritDesignationScreenScript>().Initialization();
     }
 }
