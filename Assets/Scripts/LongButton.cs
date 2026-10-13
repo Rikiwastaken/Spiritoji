@@ -6,6 +6,7 @@ public class LongButton : MonoBehaviour
 {
 
 
+    [SerializeField] private bool requireLongPress = false;
     [SerializeField] private float timetoSelect = 0.5f;
     private float TimeWhenSelectionDone = -1;
 
@@ -15,16 +16,22 @@ public class LongButton : MonoBehaviour
 
     private float Buffer = 0;
     [SerializeField] private Image FillingImage;
-    [SerializeField] private Material Fillingmat;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         button = GetComponent<Button>();
-        Material newmat = new Material(Fillingmat);
-        FillingImage.material = newmat;
-        FillingImage.material.SetFloat("_DissolvePercent", 1f);
+        FillingImage.fillAmount = 0f;
+        if (!requireLongPress)
+            button.onClick.AddListener(OnClick);
 
+    }
+
+    private void OnClick()
+    {
+        if (Time.time < Buffer)
+            return;
+        ButtonEvent.Invoke();
     }
 
     private void OnEnable()
@@ -43,21 +50,24 @@ public class LongButton : MonoBehaviour
         if (TimeWhenSelectionDone < Time.time && TimeWhenSelectionDone != -1)
         {
             TimeWhenSelectionDone = -1;
+            FillingImage.fillAmount = 0f;
             ButtonEvent.Invoke();
         }
         else if (TimeWhenSelectionDone != -1)
         {
             float ratio = ((TimeWhenSelectionDone - Time.time) / timetoSelect);
-            FillingImage.material.SetFloat("_DissolvePercent", ratio);
+            FillingImage.fillAmount = 1f - ratio;
         }
         else
         {
-            FillingImage.material.SetFloat("_DissolvePercent", 1f);
+            FillingImage.fillAmount = 0f;
         }
     }
 
     public void buttonPressed()
     {
+        if (!requireLongPress)
+            return;
         TimeWhenSelectionDone = Time.time + timetoSelect;
     }
 
