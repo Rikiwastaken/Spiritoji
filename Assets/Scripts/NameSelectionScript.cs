@@ -48,6 +48,14 @@ public class NameSelectionScript : MonoBehaviour
         GameManagerScript.instance.AllPlayerData = newAllPlayerData;
     }
 
+    public void RemoveName(int ID)
+    {
+        GameObject GOtoRemove = SpawnedGO[ID];
+        SpawnedGO.RemoveAt(ID);
+        Destroy(GOtoRemove);
+        ReplaceButtons();
+    }
+
 
     // Creates a new input field for names
     public void SpawnButton()
@@ -65,10 +73,22 @@ public class NameSelectionScript : MonoBehaviour
 
         SpawnNameButton.transform.localPosition = BaseSpawnpos - new Vector2(0, (alreadySpawnedNames + 1) * SpawnOffset);
 
+
+        newobject.GetComponentInChildren<NameButtonScript>().Initialize(alreadySpawnedNames, this);
         SpawnedGO.Add(newobject);
 
         TMP_InputField inputfield = newobject.GetComponent<TMP_InputField>();
 
+    }
+
+    private void ReplaceButtons()
+    {
+        for (int i = 0; i < SpawnedGO.Count; i++)
+        {
+            SpawnedGO[i].transform.localPosition = BaseSpawnpos - new Vector2(0, i * SpawnOffset);
+            SpawnedGO[i].GetComponentInChildren<NameButtonScript>().Initialize(i, this);
+        }
+        SpawnNameButton.transform.localPosition = BaseSpawnpos - new Vector2(0, (SpawnedGO.Count) * SpawnOffset);
     }
 
     public void Continue()
