@@ -158,7 +158,7 @@ MonoBehaviour:
   SituationsList: []
   NumberOfPossibleSituations: 3
   PossibleSituationsID: 
-  SelectedSituationsID: 0
+  SelectedSituations: 
   EmojiIDs: 
   MaxEmojis: 4
 --- !u!4 &133298635

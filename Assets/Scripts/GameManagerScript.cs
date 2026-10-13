@@ -54,7 +54,7 @@ public class GameManagerScript : MonoBehaviour
 
 
     [SerializeField] private List<int> PossibleSituationsID;
-    [SerializeField] private int SelectedSituationsID;
+    [SerializeField] private string SelectedSituations;
 
     public List<int> EmojiIDs;
     [SerializeField] private int MaxEmojis;
@@ -91,7 +91,7 @@ public class GameManagerScript : MonoBehaviour
     {
         AlreadyPlayed = new List<int>();
         CurrentPlayer = -1;
-        SelectedSituationsID = -1;
+        SelectedSituations = "";
         PossibleSituationsID = new List<int>();
         EmojiIDs = new List<int>();
         PlayerGuesses = new List<PlayerGuess>();
@@ -188,12 +188,17 @@ public class GameManagerScript : MonoBehaviour
 
     public void SetSelectedSituationID(int ID)
     {
-        SelectedSituationsID = PossibleSituationsID[ID];
+        SelectedSituations = SituationsList[PossibleSituationsID[ID]];
     }
 
-    public int GetSelectedSituationID()
+    public void SetSelectedSituationID(string situation)
     {
-        return SelectedSituationsID;
+        SelectedSituations = situation;
+    }
+
+    public string GetSelectedSituation()
+    {
+        return SelectedSituations;
     }
 
     public void ChangeEmojiList(int ID)

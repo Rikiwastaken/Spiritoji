@@ -9,7 +9,7 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
 
     [SerializeField] private Button FirstSentenceButton;
     [SerializeField] private Button SecondSentenceButton;
-    [SerializeField] private Button ThirdSentenceButton;
+    [SerializeField] private TMP_InputField CustomSentence;
 
     [SerializeField] private Color SelectedColor;
     [SerializeField] private List<Image> EmojiImageList;
@@ -23,11 +23,10 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
 
         ResetColors(FirstSentenceButton);
         ResetColors(SecondSentenceButton);
-        ResetColors(ThirdSentenceButton);
+        CustomSentence.text = "";
         List<string> situations = GameManagerScript.instance.GetPossibleSituations();
         FirstSentenceButton.GetComponentInChildren<TextMeshProUGUI>().text = situations[0];
         SecondSentenceButton.GetComponentInChildren<TextMeshProUGUI>().text = situations[1];
-        ThirdSentenceButton.GetComponentInChildren<TextMeshProUGUI>().text = situations[2];
         UpdateInsertedEmojis();
     }
 
@@ -36,7 +35,6 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
     {
         ResetColors(FirstSentenceButton);
         ResetColors(SecondSentenceButton);
-        ResetColors(ThirdSentenceButton);
         ColorBlock colors;
         switch (ID)
         {
@@ -51,12 +49,7 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
                 colors.normalColor = CloneColor(SelectedColor);
                 colors.selectedColor = CloneColor(SelectedColor);
                 SecondSentenceButton.colors = colors;
-                break;
-            case 2:
-                colors = ThirdSentenceButton.colors;
-                colors.normalColor = CloneColor(SelectedColor);
-                colors.selectedColor = CloneColor(SelectedColor);
-                ThirdSentenceButton.colors = colors;
+
                 break;
         }
         GameManagerScript.instance.SetSelectedSituationID(ID);
@@ -77,7 +70,11 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
 
     public void Continue()
     {
-        if (GameManagerScript.instance.GetSelectedSituationID() >= 0 && GameManagerScript.instance.EmojiIDs.Count > 0)
+        if (CustomSentence.text != "")
+        {
+            GameManagerScript.instance.SetSelectedSituationID(CustomSentence.text);
+        }
+        if (GameManagerScript.instance.GetSelectedSituation() != "" && GameManagerScript.instance.EmojiIDs.Count > 0)
         {
             GameManagerScript.instance.SelectPlayer();
             TransitionScreen.GetComponent<PlayerTransitionScript>().Initialization();

@@ -60,13 +60,13 @@ Material:
     - _MoveOverTime: 1
     - _NoiseScale: 30
     - _NoiseType: 0
-    - _OutlineThickness: 0.1
+    - _OutlineThickness: 0.05
     - _QueueControl: 0
     - _QueueOffset: 0
     - _TelekOutlineThickness: 1.1
     - _Twirl: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
-    - _OutlineColor: {r: 4.547535, g: 0, b: 4.2917337, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 4.547535, g: 0, b: 1.5704988, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
