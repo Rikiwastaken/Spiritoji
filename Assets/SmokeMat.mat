@@ -61,5 +61,7 @@ Material:
     - _XRMotionVectorsPass: 1
     m_Colors:
     - _Color: {r: 0.20555186, g: 0.19405873, b: 0.27672952, a: 1}
+    - _FirstColor: {r: 0.3318367, g: 0.2852142, b: 0.4339623, a: 1}
+    - _SecondColor: {r: 0.2410734, g: 0.2236659, b: 0.2704402, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
