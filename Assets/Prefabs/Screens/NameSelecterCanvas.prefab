@@ -465,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 609563233894868387, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -876
+      value: -808
       objectReference: {fileID: 0}
     - target: {fileID: 609563233894868387, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -487,10 +487,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Start
       objectReference: {fileID: 0}
+    - target: {fileID: 4124674496278940900, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
+      propertyPath: m_fontSize
+      value: 89.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5312768223197428972, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
       propertyPath: ButtonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4871556415233239574}
+    - target: {fileID: 6888322161579121609, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -79
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -642,6 +642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiritGuessTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 3253153356797561361, guid: 1b2c00f1e1ec2324bb5b047079197ca2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7276941205490461173, guid: 1b2c00f1e1ec2324bb5b047079197ca2, type: 3}
       propertyPath: ToSpiritGuess
       value: 1
@@ -765,6 +769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerTransitionScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3253153356797561361, guid: 14c7f468fff8e8a47b8d85d91c97beb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -866,6 +874,10 @@ PrefabInstance:
     - target: {fileID: 3253153356797561361, guid: 199048599ed55e84d96b0a6d8d0f7869, type: 3}
       propertyPath: m_Name
       value: ScoreScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253153356797561361, guid: 199048599ed55e84d96b0a6d8d0f7869, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6526117795524129483, guid: 199048599ed55e84d96b0a6d8d0f7869, type: 3}
       propertyPath: SpiritDesignationMenu
@@ -1407,6 +1419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerChoiceScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3253153356797561361, guid: ada623f42bbab2945b6b07cb357f6c55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1650,6 +1666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiritGuessScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3253153356797561361, guid: 98072034a75dae44f941b39a3fb5d112, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1755,6 +1775,10 @@ PrefabInstance:
     - target: {fileID: 3253153356797561361, guid: ece4660c76201c54997bb791ea6c5991, type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253153356797561361, guid: ece4660c76201c54997bb791ea6c5991, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
