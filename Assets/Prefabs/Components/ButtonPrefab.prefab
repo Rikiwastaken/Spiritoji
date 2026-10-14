@@ -99,7 +99,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 609563233894868387}
-  - component: {fileID: 5805797191396685164}
   - component: {fileID: 6214175501520581092}
   - component: {fileID: 7499851503962275752}
   - component: {fileID: 5054806268459958324}
@@ -136,22 +135,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -876}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5805797191396685164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989099099078763184}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f53eb63e9aea5408bd00af65197187, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.043137256, g: 0.0627451, b: 0.3254902, a: 1}
-  m_color2: {r: 0.011764706, g: 0.09411765, b: 1, a: 1}
-  m_angle: -86
-  m_ignoreRatio: 1
 --- !u!222 &6214175501520581092
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -265,6 +248,7 @@ MonoBehaviour:
         m_CallState: 2
   FillingImage: {fileID: 7499851503962275752}
   Fillingmat: {fileID: 2100000, guid: d6d0ec28c67648c448d18fec676a22dc, type: 2}
+  LongSFXToPlay: 0
 --- !u!114 &703712400988249951
 MonoBehaviour:
   m_ObjectHideFlags: 0
