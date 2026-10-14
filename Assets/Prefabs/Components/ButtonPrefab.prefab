@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49f34630f9f437499fa37a7a5b648e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  requireLongPress: 0
   timetoSelect: 0.5
   ButtonEvent:
     m_PersistentCalls:
