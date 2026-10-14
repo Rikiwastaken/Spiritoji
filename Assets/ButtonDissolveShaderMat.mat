@@ -73,10 +73,10 @@ Material:
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveOutlineColor: {r: 4.547535, g: 0, b: 1.570499, a: 0}
-    - _DownColor: {r: 0.011764706, g: 0.09411765, b: 1, a: 1}
+    - _DownColor: {r: 0.14827333, g: 0.19122396, b: 0.6603774, a: 1}
     - _LeftColor: {r: 0.13523427, g: 0, b: 0.8490566, a: 1}
     - _OutlineColor: {r: 0.8805031, g: 0.8805031, b: 0.8805031, a: 1}
     - _RightColor: {r: 0.7106918, g: 0.7106918, b: 0.7106918, a: 1}
-    - _UpColor: {r: 0.043137256, g: 0.0627451, b: 0.3254902, a: 1}
+    - _UpColor: {r: 0.09618366, g: 0.11020653, b: 0.2981131, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
