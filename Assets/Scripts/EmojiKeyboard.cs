@@ -66,6 +66,7 @@ public class EmojiKeyboard : MonoBehaviour
     {
         GameManagerScript.instance.ChangeEmojiList(ID);
         _SpiritSentenceAndEmojiScreen.UpdateInsertedEmojis();
+        MusicManager.instance.EmojiKeyBoardSFX();
     }
 
 }

@@ -17,6 +17,7 @@ public class LongButton : MonoBehaviour
     private float Buffer = 0;
     [SerializeField] private Image FillingImage;
     [SerializeField] private Material Fillingmat;
+    [SerializeField] private int LongSFXToPlay;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +35,10 @@ public class LongButton : MonoBehaviour
     {
         if (Time.time < Buffer)
             return;
+        if (!requireLongPress)
+        {
+            MusicManager.instance.InstantSoundEffect();
+        }
         ButtonEvent.Invoke();
     }
 
@@ -54,6 +59,7 @@ public class LongButton : MonoBehaviour
         {
             TimeWhenSelectionDone = -1;
             FillingImage.material.SetFloat("_DissolvePercent", 0f);
+            MusicManager.instance.LongButtonSoundEffect(LongSFXToPlay);
             ButtonEvent.Invoke();
         }
         else if (TimeWhenSelectionDone != -1)

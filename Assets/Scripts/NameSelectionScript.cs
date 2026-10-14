@@ -93,10 +93,16 @@ public class NameSelectionScript : MonoBehaviour
 
     public void Continue()
     {
+
         GetNamesFromInputFields();
-        GameManagerScript.instance.ChooseSpirit();
-        SpiritDesignationMenu.SetActive(true);
-        gameObject.SetActive(false);
-        SpiritDesignationMenu.GetComponent<SpiritDesignationScreenScript>().Initialization();
+        if (GameManagerScript.instance.AllPlayerData.Count >= 2)
+        {
+            MusicManager.instance.StopMainMenuMusic();
+            GameManagerScript.instance.ChooseSpirit();
+            SpiritDesignationMenu.SetActive(true);
+            gameObject.SetActive(false);
+            SpiritDesignationMenu.GetComponent<SpiritDesignationScreenScript>().Initialization();
+        }
+
     }
 }

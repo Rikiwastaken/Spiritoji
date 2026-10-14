@@ -60,7 +60,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DissolveOutlineThickness: 0.05
-    - _DissolvePercent: 0.971
+    - _DissolvePercent: 1
     - _MinimumOpacity: 0
     - _MoveOverTime: 1
     - _NoiseScale: 30
