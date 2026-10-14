@@ -97,7 +97,7 @@ public class NameSelectionScript : MonoBehaviour
         GetNamesFromInputFields();
         if (GameManagerScript.instance.AllPlayerData.Count >= 2)
         {
-            MusicManager.instance.StopMainMenuMusic();
+            MusicManager.instance.StopMusic();
             GameManagerScript.instance.ChooseSpirit();
             SpiritDesignationMenu.SetActive(true);
             gameObject.SetActive(false);

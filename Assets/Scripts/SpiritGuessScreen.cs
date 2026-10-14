@@ -86,6 +86,7 @@ public class SpiritGuessScreen : MonoBehaviour
     public void Continue()
     {
         DistributeScore();
+        MusicManager.instance.StartResultsMusic();
         gameObject.SetActive(false);
         ResultGuessScreen.gameObject.SetActive(true);
         ResultGuessScreen.GetComponent<ScoreScreen>().Initialization();

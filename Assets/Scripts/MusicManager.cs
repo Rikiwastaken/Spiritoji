@@ -6,10 +6,11 @@ public class MusicManager : MonoBehaviour
 
     public static MusicManager instance;
 
-    [SerializeField] private AudioSource MainMenuMusicAudioSource;
+    [SerializeField] private AudioSource MusicAudioSource;
     [SerializeField] private GameObject SFXPrefab;
 
     [SerializeField] private AudioClip MainMenuMusicClip;
+    [SerializeField] private AudioClip ResultsMusicClip;
     [SerializeField] private AudioClip InstantButtonClip;
 
     [SerializeField] private List<AudioClip> LongButtonClips;
@@ -21,19 +22,31 @@ public class MusicManager : MonoBehaviour
 
     public void StartMainMenuMusic()
     {
-        if (MainMenuMusicAudioSource.clip == null)
+        if (MusicAudioSource.clip == null)
         {
-            MainMenuMusicAudioSource.clip = MainMenuMusicClip;
+            MusicAudioSource.clip = MainMenuMusicClip;
         }
-        if (!MainMenuMusicAudioSource.isPlaying)
+        if (!MusicAudioSource.isPlaying)
         {
-            MainMenuMusicAudioSource.Play();
+            MusicAudioSource.Play();
         }
     }
 
-    public void StopMainMenuMusic()
+    public void StartResultsMusic()
     {
-        MainMenuMusicAudioSource.Stop();
+        if (MusicAudioSource.clip == null)
+        {
+            MusicAudioSource.clip = ResultsMusicClip;
+        }
+        if (!MusicAudioSource.isPlaying)
+        {
+            MusicAudioSource.Play();
+        }
+    }
+
+    public void StopMusic()
+    {
+        MusicAudioSource.Stop();
     }
 
     public void InstantSoundEffect()

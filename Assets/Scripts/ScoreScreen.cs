@@ -35,6 +35,7 @@ public class ScoreScreen : MonoBehaviour
 
     public void Replay()
     {
+        MusicManager.instance.StopMusic();
         GameManagerScript.instance.ChooseSpirit();
         GameManagerScript.instance.ResetPlayed();
         SpiritDesignationMenu.SetActive(true);

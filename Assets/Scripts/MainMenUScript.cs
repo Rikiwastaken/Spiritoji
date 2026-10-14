@@ -8,4 +8,10 @@ public class MainMenUScript : MonoBehaviour
         gameObject.SetActive(false);
         NameSelectMenu.SetActive(true);
     }
+
+    public void Start()
+    {
+        MusicManager.instance.StartMainMenuMusic();
+    }
+
 }
