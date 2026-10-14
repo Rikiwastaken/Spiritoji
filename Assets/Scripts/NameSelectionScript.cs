@@ -15,6 +15,7 @@ public class NameSelectionScript : MonoBehaviour
     private Vector2 BaseSpawnpos;
 
     [SerializeField] private int SpawnOffset;
+    [SerializeField] private float SpawnButtonSpacing = 40;
     [SerializeField] private int MaxNames;
 
     [SerializeField] private GameObject SpiritDesignationMenu;
@@ -57,7 +58,6 @@ public class NameSelectionScript : MonoBehaviour
     }
 
 
-    // Creates a new input field for names
     public void SpawnButton()
     {
         if (SpawnedGO.Count >= MaxNames)
@@ -69,26 +69,45 @@ public class NameSelectionScript : MonoBehaviour
         int alreadySpawnedNames = SpawnedGO.Count;
         newobject.transform.SetParent(transform);
 
-        newobject.transform.localPosition = BaseSpawnpos - new Vector2(0, alreadySpawnedNames * SpawnOffset);
-
-        SpawnNameButton.transform.localPosition = BaseSpawnpos - new Vector2(0, (alreadySpawnedNames + 1) * SpawnOffset);
-
-
         newobject.GetComponentInChildren<NameButtonScript>().Initialize(alreadySpawnedNames, this);
         SpawnedGO.Add(newobject);
 
-        TMP_InputField inputfield = newobject.GetComponent<TMP_InputField>();
-
+        ReplaceButtons();
     }
 
     private void ReplaceButtons()
     {
         for (int i = 0; i < SpawnedGO.Count; i++)
         {
-            SpawnedGO[i].transform.localPosition = BaseSpawnpos - new Vector2(0, i * SpawnOffset);
+            SpawnedGO[i].transform.localPosition = GetFieldPosition(SpawnedGO[i], i);
             SpawnedGO[i].GetComponentInChildren<NameButtonScript>().Initialize(i, this);
         }
-        SpawnNameButton.transform.localPosition = BaseSpawnpos - new Vector2(0, (SpawnedGO.Count) * SpawnOffset);
+
+        if (SpawnedGO.Count == 0)
+        {
+            SpawnNameButton.transform.localPosition = BaseSpawnpos;
+            return;
+        }
+
+        GameObject lastField = SpawnedGO[SpawnedGO.Count - 1];
+        RectTransform lastRect = lastField.GetComponent<RectTransform>();
+        float lastFieldBottom = lastField.transform.localPosition.y + lastRect.rect.yMin * lastRect.localScale.y;
+        float buttonTopOffset = SpawnNameButton.rect.yMax * SpawnNameButton.localScale.y;
+        SpawnNameButton.transform.localPosition = new Vector2(BaseSpawnpos.x, lastFieldBottom - SpawnButtonSpacing - buttonTopOffset);
+    }
+
+    private Vector2 GetFieldPosition(GameObject field, int index)
+    {
+        RectTransform root = field.GetComponent<RectTransform>();
+        float min = root.rect.xMin;
+        float max = root.rect.xMax;
+        foreach (RectTransform child in root)
+        {
+            min = Mathf.Min(min, child.localPosition.x + child.rect.xMin);
+            max = Mathf.Max(max, child.localPosition.x + child.rect.xMax);
+        }
+        float centerOffset = -(min + max) / 2f * root.localScale.x;
+        return BaseSpawnpos + new Vector2(centerOffset, -index * SpawnOffset);
     }
 
     public void Continue()

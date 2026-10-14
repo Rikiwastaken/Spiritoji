@@ -10,16 +10,19 @@ public class ScoreScreen : MonoBehaviour
 
     [SerializeField] private List<TextMeshProUGUI> NameTMPList;
     [SerializeField] private List<TextMeshProUGUI> ScoreTMPList;
-    [SerializeField] private TextMeshProUGUI PreviousDeathCause;
+    [SerializeField] private TextMeshProUGUI SpiritText;
+    [SerializeField] private TextMeshProUGUI DeathText;
 
     [SerializeField] private GameObject SpiritDesignationMenu;
 
     public void Initialization()
     {
         List<PlayerData> PlayerDatalist = GameManagerScript.instance.AllPlayerData.OrderByDescending(player => player.PlayerScore).ToList();
-        PreviousDeathCause.text = GameManagerScript.instance.GetSpiritName() + " died by: " + GameManagerScript.instance.GetSelectedSituation();
+        SpiritText.text = GameManagerScript.instance.GetSpiritName() + " died by:";
+        DeathText.text = GameManagerScript.instance.GetSelectedSituation();
         for (int i = 0; i < PlayerDatalist.Count; i++)
         {
+            NameTMPList[i].transform.parent.gameObject.SetActive(true);
             NameTMPList[i].gameObject.SetActive(true);
             NameTMPList[i].text = PlayerDatalist[i].PlayerName;
             ScoreTMPList[i].gameObject.SetActive(true);
@@ -27,8 +30,7 @@ public class ScoreScreen : MonoBehaviour
         }
         for (int i = PlayerDatalist.Count; i < NameTMPList.Count; i++)
         {
-            NameTMPList[i].gameObject.SetActive(false);
-            ScoreTMPList[i].gameObject.SetActive(false);
+            NameTMPList[i].transform.parent.gameObject.SetActive(false);
         }
     }
 
