@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5312768223197428972, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
+      propertyPath: LongSFXToPlay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888322161579121609, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -300
+      objectReference: {fileID: 0}
     - target: {fileID: 7499851503962275752, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 1.5058824
@@ -39,10 +47,6 @@ PrefabInstance:
     - target: {fileID: 8254258725783231369, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6888322161579121609, guid: 648c6fbea3132ab41af27d8aab59420a, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -12,7 +12,6 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioClip MainMenuMusicClip;
     [SerializeField] private AudioClip ResultsMusicClip;
     [SerializeField] private AudioClip InstantButtonClip;
-
     [SerializeField] private List<AudioClip> LongButtonClips;
     [SerializeField] private List<AudioClip> EmojisClips;
     private void Awake()
@@ -22,7 +21,7 @@ public class MusicManager : MonoBehaviour
 
     public void StartMainMenuMusic()
     {
-        if (MusicAudioSource.clip == null)
+        if (MusicAudioSource.clip !=MainMenuMusicClip)
         {
             MusicAudioSource.clip = MainMenuMusicClip;
         }
@@ -34,7 +33,7 @@ public class MusicManager : MonoBehaviour
 
     public void StartResultsMusic()
     {
-        if (MusicAudioSource.clip == null)
+        if (MusicAudioSource.clip !=ResultsMusicClip)
         {
             MusicAudioSource.clip = ResultsMusicClip;
         }

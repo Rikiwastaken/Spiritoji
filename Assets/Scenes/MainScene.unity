@@ -566,11 +566,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   MusicAudioSource: {fileID: 133298638}
   SFXPrefab: {fileID: 1036135013877882093, guid: 2ebce4fb91da668499dc331fa6d6bb94, type: 3}
-  MainMenuMusicClip: {fileID: 0}
-  ResultsMusicClip: {fileID: 0}
-  InstantButtonClip: {fileID: 0}
-  LongButtonClips: []
-  EmojisClips: []
+  MainMenuMusicClip: {fileID: 8300000, guid: 73e7b5ee6885e5e40b23ba4c09716326, type: 3}
+  ResultsMusicClip: {fileID: 8300000, guid: 4d9a8f2fb0f3560449be14b3bf102f2c, type: 3}
+  InstantButtonClip: {fileID: 8300000, guid: e5144b389eee27b438391683d715029d, type: 3}
+  LongButtonClips:
+  - {fileID: 8300000, guid: 4646f0b63ec974d459cd1c580406c22c, type: 3}
+  - {fileID: 8300000, guid: f0ec278f43ba43f488d0367f29e6525c, type: 3}
+  - {fileID: 8300000, guid: 96159ca6e1336504f891c2441e372500, type: 3}
+  - {fileID: 8300000, guid: 147f9316c0ccbc344bef49a8558f4ad1, type: 3}
+  EmojisClips:
+  - {fileID: 8300000, guid: 09d85880969541c4a884744ff4515795, type: 3}
+  - {fileID: 8300000, guid: 2e3d9a645083dee478b15aeb9e8b58b4, type: 3}
+  - {fileID: 8300000, guid: 9da795265bf25b74d808c0ef8a94e0d7, type: 3}
+  - {fileID: 8300000, guid: 7828bd919c198234697638b6102826fd, type: 3}
 --- !u!82 &133298638
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6284,6 +6292,10 @@ PrefabInstance:
       propertyPath: SpiritSelectionScreen
       value: 
       objectReference: {fileID: 322620453}
+    - target: {fileID: 8198692705086669866, guid: 1b2c00f1e1ec2324bb5b047079197ca2, type: 3}
+      propertyPath: LongSFXToPlay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

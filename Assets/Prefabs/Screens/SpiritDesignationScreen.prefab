@@ -359,6 +359,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7294326764309114552, guid: 3bdc0ed8ce4c4150beda3a1b3c10b838, type: 3}
+      propertyPath: LongSFXToPlay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294326764309114552, guid: 3bdc0ed8ce4c4150beda3a1b3c10b838, type: 3}
       propertyPath: requireLongPress
       value: 1
       objectReference: {fileID: 0}
