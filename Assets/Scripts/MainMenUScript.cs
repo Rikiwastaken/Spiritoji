@@ -12,6 +12,7 @@ public class MainMenUScript : MonoBehaviour
     public void Start()
     {
         MusicManager.instance.StartMainMenuMusic();
+        Screen.orientation = ScreenOrientation.Portrait;
     }
 
 }
