@@ -79,7 +79,7 @@ public class SpiritGuessScreen : MonoBehaviour
 
 
         GameManagerScript.PlayerData Spirit = AllPlayerData[GameManagerScript.instance.SpiritID];
-        int newspiritscore = Spirit.PlayerScore + Mathf.Max(2, numberofwinners);
+        int newspiritscore = Spirit.PlayerScore + Mathf.Min(2, numberofwinners);
         Spirit.PlayerScore = newspiritscore;
 
     }
