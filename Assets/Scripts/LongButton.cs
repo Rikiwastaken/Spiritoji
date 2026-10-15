@@ -65,7 +65,6 @@ public class LongButton : MonoBehaviour
         else if (TimeWhenSelectionDone != -1)
         {
             float ratio = ((TimeWhenSelectionDone - Time.time) / timetoSelect);
-            Debug.Log(ratio);
             FillingImage.material.SetFloat("_DissolvePercent", ratio);
         }
         else

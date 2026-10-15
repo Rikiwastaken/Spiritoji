@@ -1164,13 +1164,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2685288544513002763, guid: 3bdc0ed8ce4c4150beda3a1b3c10b838, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6526117795524129483}
+    - target: {fileID: 2685288544513002763, guid: 3bdc0ed8ce4c4150beda3a1b3c10b838, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685288544513002763, guid: 3bdc0ed8ce4c4150beda3a1b3c10b838, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScoreScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2978256146782941173, guid: 3bdc0ed8ce4c4150beda3a1b3c10b838, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3970673011275411684, guid: 3bdc0ed8ce4c4150beda3a1b3c10b838, type: 3}
       propertyPath: m_Name
-      value: Continue (1)
+      value: Leave the seance
       objectReference: {fileID: 0}
     - target: {fileID: 4910316720123110616, guid: 3bdc0ed8ce4c4150beda3a1b3c10b838, type: 3}
       propertyPath: m_SizeDelta.x

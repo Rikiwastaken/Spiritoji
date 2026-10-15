@@ -26,7 +26,7 @@ public class SpiritDesignationScreenScript : MonoBehaviour
         }
         else
         {
-            NameTextMeshProUGUI.text = GameManagerScript.instance.GetSpiritName() + " is the spirit.";
+            NameTextMeshProUGUI.text = GameManagerScript.instance.GetSpiritName();
             GameManagerScript.instance.ResetPlayed();
             ContinueButtonTMP.text = GameManagerScript.instance.GetSpiritName() + " has the phone";
             GameManagerScript.instance.SelectPossibleSituations();
