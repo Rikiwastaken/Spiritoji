@@ -11,13 +11,14 @@ public class PlayerGuessScript : MonoBehaviour
     [SerializeField] private TMP_InputField PlayerGuessField;
 
     [SerializeField] private List<Image> EmojiImages;
+    [SerializeField] private List<TextMeshProUGUI> EmojiTMPs;
 
     public bool Buffer;
 
     public void Initialization()
     {
         PlayerGuessField.text = "";
-        List<int> EmojiIDs = GameManagerScript.instance.EmojiIDs;
+        /*List<int> EmojiIDs = GameManagerScript.instance.EmojiIDs;
         for (int i = 0; i < EmojiIDs.Count; i++)
         {
             EmojiImages[i].gameObject.SetActive(true);
@@ -26,6 +27,17 @@ public class PlayerGuessScript : MonoBehaviour
         for (int i = EmojiIDs.Count; i < EmojiImages.Count; i++)
         {
             EmojiImages[i].gameObject.SetActive(false);
+        }
+        */
+        string Emojis = GameManagerScript.instance.ChosenEmojis;
+        for (int i = 0; i < Emojis.Length; i++)
+        {
+            EmojiTMPs[i].gameObject.SetActive(true);
+            EmojiTMPs[i].text = Emojis[i] + "";
+        }
+        for (int i = Emojis.Length; i < EmojiTMPs.Count; i++)
+        {
+            EmojiTMPs[i].gameObject.SetActive(false);
         }
         Buffer = true;
     }

@@ -15,6 +15,7 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
     [SerializeField] private List<Image> EmojiImageList;
 
     [SerializeField] private GameObject TransitionScreen;
+    [SerializeField] private GameObject EmojiSubMenu;
 
 
     public void Initialization()
@@ -30,29 +31,62 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
         UpdateInsertedEmojis();
     }
 
+    private void Update()
+    {
+        if (CustomSentence.text != "")
+        {
+            GameManagerScript.instance.SetSelectedSituationID(CustomSentence.text);
+        }
+        if (GameManagerScript.instance.GetSelectedSituation() != "")
+        {
+            if (!EmojiSubMenu.activeSelf)
+            {
+                EmojiSubMenu.SetActive(true);
+            }
+        }
+        else
+        {
+            if (EmojiSubMenu.activeSelf)
+            {
+                EmojiSubMenu.SetActive(false);
+            }
+        }
+    }
+
 
     public void SelectImage(int ID)
     {
         ResetColors(FirstSentenceButton);
         ResetColors(SecondSentenceButton);
         ColorBlock colors;
-        switch (ID)
-        {
-            case 0:
-                colors = FirstSentenceButton.colors;
-                colors.normalColor = CloneColor(SelectedColor);
-                colors.selectedColor = CloneColor(SelectedColor);
-                FirstSentenceButton.colors = colors;
-                break;
-            case 1:
-                colors = SecondSentenceButton.colors;
-                colors.normalColor = CloneColor(SelectedColor);
-                colors.selectedColor = CloneColor(SelectedColor);
-                SecondSentenceButton.colors = colors;
+        int previousID = GameManagerScript.instance.GetSelectedSituationID();
 
-                break;
+        if (previousID == ID)
+        {
+            GameManagerScript.instance.SetSelectedSituationID(-1);
         }
-        GameManagerScript.instance.SetSelectedSituationID(ID);
+        else
+        {
+            switch (ID)
+            {
+                case 0:
+                    colors = FirstSentenceButton.colors;
+                    colors.normalColor = CloneColor(SelectedColor);
+                    colors.selectedColor = CloneColor(SelectedColor);
+                    FirstSentenceButton.colors = colors;
+                    break;
+                case 1:
+                    colors = SecondSentenceButton.colors;
+                    colors.normalColor = CloneColor(SelectedColor);
+                    colors.selectedColor = CloneColor(SelectedColor);
+                    SecondSentenceButton.colors = colors;
+
+                    break;
+            }
+            GameManagerScript.instance.SetSelectedSituationID(ID);
+        }
+
+
     }
 
     private void ResetColors(Button button)
@@ -74,7 +108,7 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
         {
             GameManagerScript.instance.SetSelectedSituationID(CustomSentence.text);
         }
-        if (GameManagerScript.instance.GetSelectedSituation() != "" && GameManagerScript.instance.EmojiIDs.Count > 0)
+        if (GameManagerScript.instance.GetSelectedSituation() != "" && GameManagerScript.instance.ChosenEmojis != "" && GameManagerScript.instance.ChosenEmojis.Length > 0)
         {
             GameManagerScript.instance.SelectPlayer();
             TransitionScreen.GetComponent<PlayerTransitionScript>().Initialization();
@@ -82,9 +116,9 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
             TransitionScreen.SetActive(true);
         }
     }
-
     public void UpdateInsertedEmojis()
     {
+        /*
         for (int i = 0; i < EmojiImageList.Count; i++)
         {
             if (i < GameManagerScript.instance.EmojiIDs.Count)
@@ -98,5 +132,6 @@ public class SpiritSentenceAndEmojiScreen : MonoBehaviour
             }
 
         }
+        */
     }
 }

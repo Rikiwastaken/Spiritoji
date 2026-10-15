@@ -56,7 +56,8 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private List<int> PossibleSituationsID;
     [SerializeField] private string SelectedSituations;
 
-    public List<int> EmojiIDs;
+    //public List<int> EmojiIDs;
+    public string ChosenEmojis;
     [SerializeField] private int MaxEmojis;
 
 
@@ -93,7 +94,7 @@ public class GameManagerScript : MonoBehaviour
         CurrentPlayer = -1;
         SelectedSituations = "";
         PossibleSituationsID = new List<int>();
-        EmojiIDs = new List<int>();
+        ChosenEmojis = "";
         PlayerGuesses = new List<PlayerGuess>();
     }
 
@@ -188,7 +189,27 @@ public class GameManagerScript : MonoBehaviour
 
     public void SetSelectedSituationID(int ID)
     {
-        SelectedSituations = SituationsList[PossibleSituationsID[ID]];
+        if (ID <= -1)
+        {
+            SelectedSituations = "";
+        }
+        else
+        {
+            SelectedSituations = SituationsList[PossibleSituationsID[ID]];
+        }
+
+    }
+
+    public int GetSelectedSituationID()
+    {
+        for (int i = 0; i < PossibleSituationsID.Count; i++)
+        {
+            if (SelectedSituations == SituationsList[PossibleSituationsID[i]])
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void SetSelectedSituationID(string situation)
@@ -200,7 +221,7 @@ public class GameManagerScript : MonoBehaviour
     {
         return SelectedSituations;
     }
-
+    /*
     public void ChangeEmojiList(int ID)
     {
         if (ID == -1)
@@ -211,6 +232,11 @@ public class GameManagerScript : MonoBehaviour
         {
             EmojiIDs.Add(ID);
         }
+    }
+    */
+    public void ChangeEmojiList(string emojistring)
+    {
+        emojistring = emojistring.Substring(0, MaxEmojis);
     }
 
 }

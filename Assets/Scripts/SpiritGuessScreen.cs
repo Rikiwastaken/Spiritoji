@@ -9,7 +9,7 @@ public class SpiritGuessScreen : MonoBehaviour
 
     [SerializeField] private GameObject ResultGuessScreen;
 
-    [SerializeField] private List<Image> EmojiImages;
+    [SerializeField] private List<TextMeshProUGUI> EmojiTMPs;
     [SerializeField] private List<Button> PlayerGuessesButtons;
 
     private List<Button> SelectedButtons = new List<Button>();
@@ -21,15 +21,15 @@ public class SpiritGuessScreen : MonoBehaviour
     public void Initialization()
     {
         SelectedButtons = new List<Button>();
-        List<int> EmojiIDs = GameManagerScript.instance.EmojiIDs;
-        for (int i = 0; i < EmojiIDs.Count; i++)
+        string Emojis = GameManagerScript.instance.ChosenEmojis;
+        for (int i = 0; i < Emojis.Length; i++)
         {
-            EmojiImages[i].gameObject.SetActive(true);
-            EmojiImages[i].sprite = EmojiManager.instance.EmojiSprites[EmojiIDs[i]];
+            EmojiTMPs[i].gameObject.SetActive(true);
+            EmojiTMPs[i].text = Emojis[i] + "";
         }
-        for (int i = EmojiIDs.Count; i < EmojiImages.Count; i++)
+        for (int i = Emojis.Length; i < EmojiTMPs.Count; i++)
         {
-            EmojiImages[i].gameObject.SetActive(false);
+            EmojiTMPs[i].gameObject.SetActive(false);
         }
 
         CorrespondanceButtonToPlayerID = new List<int>();
