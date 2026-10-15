@@ -7,6 +7,7 @@ public class SpiritDesignationScreenScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI NameTextMeshProUGUI;
 
     [SerializeField] private TextMeshProUGUI ContinueButtonTMP;
+    [SerializeField] private TextMeshProUGUI SpiritIsText;
 
     [SerializeField] private GameObject SpiritSelectionScreen;
     [SerializeField] private GameObject SpiritGuessScreen;
@@ -21,11 +22,13 @@ public class SpiritDesignationScreenScript : MonoBehaviour
 
         if (ToSpiritGuess)
         {
-            NameTextMeshProUGUI.text = GameManagerScript.instance.GetSpiritName() + " will now be the judge...";
+            SpiritIsText.text = "The judge will be";
+            NameTextMeshProUGUI.text = GameManagerScript.instance.GetSpiritName();
             ContinueButtonTMP.text = GameManagerScript.instance.GetSpiritName() + " has the phone";
         }
         else
         {
+            SpiritIsText.text = "The spirit is";
             NameTextMeshProUGUI.text = GameManagerScript.instance.GetSpiritName();
             GameManagerScript.instance.ResetPlayed();
             ContinueButtonTMP.text = GameManagerScript.instance.GetSpiritName() + " has the phone";

@@ -12,7 +12,7 @@ public class PlayerTransitionScript : MonoBehaviour
     // Function that puts the correct text on the correct places
     public void Initialization()
     {
-        NameTextMeshProUGUI.text = GameManagerScript.instance.GetCurrentPlayerName() + " will now be guessing.";
+        NameTextMeshProUGUI.text = GameManagerScript.instance.GetCurrentPlayerName();
         ContinueButtonTMP.text = GameManagerScript.instance.GetCurrentPlayerName() + " has the phone";
     }
 
