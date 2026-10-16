@@ -21,30 +21,68 @@ public class EmojiFilter : MonoBehaviour
         }
     }
 
-    public string Filter(string input)
+    // Ne garde que les emojis, 4 maximum. Tout le texte est supprimé.
+    public static string Filter(string s, int max = 4)
     {
+        if (string.IsNullOrEmpty(s)) return s;
+
         var sb = new StringBuilder();
-        for (int i = 0; i < input.Length; i++)
+        int count = 0;
+        int i = 0;
+
+        while (i < s.Length && count < max)
         {
-            int len = 1, cp = input[i];
-            if (char.IsHighSurrogate(input[i]) && i + 1 < input.Length && char.IsLowSurrogate(input[i + 1]))
+            int start = i;
+            int cp = Read(s, i, out int len);
+            i += len;
+
+            if (!IsEmojiBase(cp)) continue; // texte ignoré
+
+            // Drapeau = 2 regional indicators
+            if (cp >= 0x1F1E6 && cp <= 0x1F1FF && i < s.Length)
             {
-                cp = char.ConvertToUtf32(input[i], input[i + 1]);
-                len = 2;
+                int n = Read(s, i, out int nl);
+                if (n >= 0x1F1E6 && n <= 0x1F1FF) i += nl;
             }
-            if (IsEmoji(cp)) sb.Append(input, i, len);
-            i += len - 1;
+
+            // Absorbe modificateurs, sélecteurs, séquences ZWJ
+            while (i < s.Length)
+            {
+                int n = Read(s, i, out int nl);
+                if (n == 0xFE0F || n == 0x20E3 || (n >= 0x1F3FB && n <= 0x1F3FF))
+                {
+                    i += nl;
+                }
+                else if (n == 0x200D && i + nl < s.Length)
+                {
+                    i += nl;
+                    Read(s, i, out int el);
+                    i += el;
+                }
+                else break;
+            }
+
+            sb.Append(s, start, i - start);
+            count++;
         }
         return sb.ToString();
     }
 
-    static bool IsEmoji(int cp) =>
-        (cp >= 0x1F000 && cp <= 0x1FAFF) ||   // pictographs, flags, skin tones, symbols
-        (cp >= 0x2600 && cp <= 0x27BF) ||   // misc symbols, dingbats
-        (cp >= 0x2300 && cp <= 0x23FF) ||   // watch, hourglass, etc.
-        (cp >= 0x2B00 && cp <= 0x2BFF) ||   // stars, arrows
-        (cp >= 0xE0020 && cp <= 0xE007F) ||   // tag chars (subdivision flags)
-        cp == 0x200D || cp == 0xFE0F || cp == 0x20E3 ||  // ZWJ, VS16, keycap
-        cp == 0xA9 || cp == 0xAE || cp == 0x2122 ||
-        cp == 0x203C || cp == 0x2049;
+    static int Read(string s, int i, out int len)
+    {
+        if (char.IsHighSurrogate(s[i]) && i + 1 < s.Length && char.IsLowSurrogate(s[i + 1]))
+        {
+            len = 2;
+            return char.ConvertToUtf32(s[i], s[i + 1]);
+        }
+        len = 1;
+        return s[i];
+    }
+
+    static bool IsEmojiBase(int cp) =>
+        (cp >= 0x1F300 && cp <= 0x1FAFF) ||
+        (cp >= 0x1F1E6 && cp <= 0x1F1FF) ||
+        (cp >= 0x2600 && cp <= 0x27BF) ||
+        (cp >= 0x231A && cp <= 0x23FF) ||
+        cp == 0x2B50 || cp == 0x2B55 || cp == 0x2764;
 }
